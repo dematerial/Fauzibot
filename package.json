@@ -1,0 +1,32 @@
+{
+  "name": "fauzibot",
+  "version": "1.0.0",
+  "description": "fauzi bot on discord",
+  "main": "bot.js",
+  "engines": {
+    "node": "8.9.4",
+    "npm": "5.6.0"
+  },
+  "dependencies": {
+    "config.json": "0.0.4",
+    "discord.js": "^11.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node bot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dematerial/fauzibot.git"
+  },
+  "keywords": [
+    "fauzibot"
+  ],
+  "author": "material",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dematerial/fauzibot/issues"
+  },
+  "homepage": "https://github.com/dematerial/fauzibot#readme"
+}
