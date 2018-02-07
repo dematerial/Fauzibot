@@ -1,0 +1,2 @@
+# fauzibot
+fauzi discord bot
