@@ -3,11 +3,15 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 
-const quotes = config.quotes;
-const prefix = config.prefix;
+var InfiniteLoop = require('infinite-loop');
+var il = new InfiniteLoop;
 
-const InfiniteLoop = require('infinite-loop');
-const il = new InfiniteLoop;
+var quotes = config.quotes;
+var prefix = config.prefix;
+
+client.on('ready', () => {
+  console.log('Bot fauzi siap gan!');
+});
 
 function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
@@ -15,11 +19,6 @@ function randomQuote() {
 il.add(randomQuote, []);
 
 il.run();
-
-client.on('ready', () => {
-  console.log('Bot fauzi siap gan!');
-});
-
 
 client.on('message', message => {
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
@@ -29,7 +28,7 @@ client.on('message', message => {
 						             "ping = kalkulasi latency\n" +
 						             "coinflip/cointoss = lempar koin gan\n" +
 						             "roll = lempar dadu angka 1-100\n" +
-						             "quote = kata-kata legendaris fauzi" +
+						             "quote = kata-kata legendaris fauzi\n" +
 						             "ipk = show off ipk fauzi\n" +
 						             "ganteng = coba sendiri lah ya\n" +
 						             "mukasaya = berkaca dulu gan");
