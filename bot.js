@@ -3,6 +3,18 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 
+const quotes = config.quotes;
+const prefix = config.prefix;
+
+const InfiniteLoop = require('infinite-loop');
+const il = new InfiniteLoop;
+
+function randomQuote() {
+	return quotes[Math.floor(Math.random() * quotes.length)];
+};
+il.add(randomQuote, []);
+
+il.run();
 
 client.on('ready', () => {
   console.log('Bot fauzi siap gan!');
@@ -13,7 +25,14 @@ client.on('message', message => {
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
   if (message.content.startsWith(config.prefix + "keyword")) {
-    message.channel.send("WAJIB PAKAI PREFIX '!' SEBELUM PERINTAH DIBAWAH\n\nping = kalkulasi latency\nipk = show off ipk fauzi\nganteng = coba sendiri lah ya\nmukasaya = berkaca dulu gan");
+    message.channel.send("WAJIB PAKAI PREFIX '!' SEBELUM PERINTAH DIBAWAH\n\n" +
+						             "ping = kalkulasi latency\n" +
+						             "coinflip/cointoss = lempar koin gan\n" +
+						             "roll = lempar dadu angka 1-100\n" +
+						             "quote = kata-kata legendaris fauzi" +
+						             "ipk = show off ipk fauzi\n" +
+						             "ganteng = coba sendiri lah ya\n" +
+						             "mukasaya = berkaca dulu gan");
   }
   if (message.content.startsWith(config.prefix + "ping")) {
     message.reply(new Date().getTime() - message.createdTimestamp + " ms latency");       
@@ -26,6 +45,21 @@ client.on('message', message => {
   }
   if (message.content.startsWith(config.prefix + "ganteng")) {
     message.reply("Tampan dan Berani", {files: ["http://i65.tinypic.com/27y3ndx.jpg"]});
+  }
+  if (message.content.startsWith(config.prefix + "cointoss") || message.content.startsWith(config.prefix + "coinflip")) {
+		var flip = Math.floor(Math.random() * 2 + 1);
+		if (flip === 1) {
+			message.reply("tails!");
+		}
+		else {
+			message.reply("heads!");
+  }}
+  if (message.content.startsWith(config.prefix + "roll")) {
+  		var result = Math.floor((Math.random() * 100) + 1);
+  	message.reply("You rolled a: " + result);
+  }
+  if (message.content.startsWith(config.prefix + "quote")) {
+    message.channel.send(randomQuote());
   }
 });
 
