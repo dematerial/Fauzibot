@@ -13,19 +13,19 @@ client.on('message', message => {
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
   if (message.content.startsWith(config.prefix + "keyword")) {
-    message.channel.send("WAJIB PAKAI PREFIX '!' SEBELUM PERINTAH DIBAWAH\nping = kalkulasi latency\nipk = show off ipk fauzi\nganteng = coba sendiri lah ya\nmukasaya = berkaca dulu gan");
+    message.channel.send("WAJIB PAKAI PREFIX '!' SEBELUM PERINTAH DIBAWAH\n\nping = kalkulasi latency\nipk = show off ipk fauzi\nganteng = coba sendiri lah ya\nmukasaya = berkaca dulu gan");
   }
   if (message.content.startsWith(config.prefix + "ping")) {
-    message.channel.send(new Date().getTime() - message.createdTimestamp + " ms");       
+    message.reply(new Date().getTime() - message.createdTimestamp + " ms latency");       
   }
   if (message.content.startsWith(config.prefix + "ipk")) {
-    message.channel.send("ez 3.92 bosku");
+    message.reply("ez 3.92 bosku");
   }
   if (message.content.startsWith(config.prefix + "mukasaya")) {
     message.reply(message.author.avatarURL);
   }
   if (message.content.startsWith(config.prefix + "ganteng")) {
-    message.channel.send("Tampan dan Berani", {files: ["http://i65.tinypic.com/27y3ndx.jpg"]});
+    message.reply("Tampan dan Berani", {files: ["http://i65.tinypic.com/27y3ndx.jpg"]});
   }
 });
 
