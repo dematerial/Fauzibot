@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 const client = new Discord.Client();
 const config = require('./config.json');
-
+const weather = require('weather-js');
 var InfiniteLoop = require('infinite-loop');
 var il = new InfiniteLoop;
 
@@ -21,11 +21,15 @@ il.add(randomQuote, []);
 il.run();
 
 client.on('message', message => {
+	let cont = message.content.slice(config.prefix.lenght).split(' ');
+	let args = cont.slice(1);
+	
   if (!message.content.startsWith(config.prefix) || message.author.bot) return;
 
   if (message.content.startsWith(config.prefix + "keyword")) {
     message.channel.send("WAJIB PAKAI PREFIX '!' SEBELUM PERINTAH DIBAWAH\n\n" +
 						             "ping = kalkulasi latency\n" +
+			 				     "weather <kota> = cek kondisi cuaca di kota tsb\n" +
 						             "coinflip/cointoss = lempar koin gan\n" +
 						             "roll = lempar dadu angka 1-100\n" +
 						             "quote = kata-kata legendaris fauzi\n" +
@@ -59,6 +63,28 @@ client.on('message', message => {
   }
   if (message.content.startsWith(config.prefix + "quote")) {
     message.channel.send(randomQuote());
+  }
+  if (message.content.startsWith(config.prefix + "weather")) {
+	weather.find({search: args.join(" "), degreeType: "C"}, function(err, result){
+		if (err) message.channel.send(err);
+		
+		var current = result[0].current;
+		var location = result[0].location;
+		
+		const embed = new Discord.RichEmbed()
+		.setDescription(current.skytext)
+		.setAuthor(current.observationpoint)
+		.setThumbnail(current.imageUrl)
+		.setColor(0x009fff)
+		.addField('Timezone', "UTC-" + location.timezone, true)
+		.addField('Degree Type',location.degreeType, true)
+		.addField('Temperature',current.temperature + " C", true)
+		.addField('Feels Like',current.feelslike + " C", true)
+		.addField('Winds',current.winddisplay, true)
+		.addField('Humidity',current.humidity + "%", true)
+		
+      message.channel.send({embed})
+      })
   }
 });
 
