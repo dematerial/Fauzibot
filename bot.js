@@ -10,6 +10,7 @@ var quotes = config.quotes;
 var prefix = config.prefix;
 
 client.on('ready', () => {
+  bot.user.setGame("Playing with Lugas");
   console.log('Bot fauzi siap gan!');
 });
 
