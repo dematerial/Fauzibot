@@ -10,7 +10,7 @@
   "dependencies": {
     "config.json": "0.0.4",
     "discord.js": "^11.3.0",
-    "infinite-loop": "^0.2.2"
+    "infinite-loop": "^0.2.2",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {},
