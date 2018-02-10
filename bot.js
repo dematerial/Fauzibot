@@ -10,6 +10,7 @@ var quotes = config.quotes;
 var prefix = config.prefix;
 
 client.on('ready', () => {
+  client.user.setActivity("with Lugas");
   console.log('Bot fauzi siap gan!');
 });
 
