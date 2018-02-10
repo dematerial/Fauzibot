@@ -34,6 +34,7 @@ client.on('message', message => {
 						             "roll = lempar dadu angka 1-100\n" +
 						             "quote = kata-kata legendaris fauzi\n" +
 						             "ipk = show off ipk fauzi\n" +
+			 				     "senjata = request senjata\n" +
 						             "ganteng = coba sendiri lah ya\n" +
 						             "mukasaya = berkaca dulu gan");
   }
@@ -42,6 +43,9 @@ client.on('message', message => {
   }
   if (message.content.startsWith(config.prefix + "ipk")) {
     message.reply("ez 3.92 bosku");
+  }
+  if (message.content.startsWith(config.prefix + "senjata")) {
+    message.reply("T A N P A  P E L U R U", {files: ["http://www.imfdb.org/images/d/db/PUBGTommyIcon.jpg"]});
   }
   if (message.content.startsWith(config.prefix + "mukasaya")) {
     message.reply(message.author.avatarURL);
