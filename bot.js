@@ -43,7 +43,22 @@ client.on('message', message => {
     message.reply(new Date().getTime() - message.createdTimestamp + " ms latency");       
   }
   if (message.content.startsWith(config.prefix + "ipk")) {
+    const embed = new Discord.RichEmbed()
+		.setDescription('Nama : Fauzi')
+		.setAuthor('Obtained from Palawa')
+		.setColor(0x00ff00)
+		.addField('Isyarat dan Sistem', "A (4.00)", true)
+		.addField('Sistem Mikroprosesor', "A (4.00)", true)
+		.addField('Studium Generale', "A (4.00)", true)
+		.addField('Jarkomdat', "A (4.00)", true)
+		.addField('Matematika Diskret', "A- (3.75)", true)
+		.addField('Prakt.Isyarat dan Sistem', "B (3.00)", true)
+		.addField('Sistem Operasi', "A (4.00)", true)
+		.addField('Teknik Basis Data', "A (4.00)", true)
+		.addField('Teknik Pemodelan', "A (4.00)", true)
+		.addField('Prakt.Teknik Basis Data', "A (4.00)", true)
     message.reply("ez 3.92 bosku");
+    message.channel.send(embed);
   }
   if (message.content.startsWith(config.prefix + "senjata")) {
     message.reply("T A N P A  P E L U R U", {files: ["http://www.imfdb.org/images/d/db/PUBGTommyIcon.jpg"]});
