@@ -72,7 +72,8 @@ client.on('message', message => {
 						             "ipk = show off ipk fauzi\n" +
 			 				     "senjata = request senjata\n" +
 						             "ganteng = coba sendiri lah ya\n" +
-						             "mukasaya = berkaca dulu gan");
+			 				     "mukasaya = berkaca dulu gan\n" +
+						             "command cek level bisa tanya @developers");
   }
   if (message.content.startsWith(config.prefix + "ping")) {
     message.reply(new Date().getTime() - message.createdTimestamp + " ms latency");       
