@@ -3,6 +3,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./config.json');
 const weather = require('weather-js');
+const dotenv = require('dotenv');
+dotenv.config();
 const sql = require("sqlite");
 sql.open("./score.sqlite");
 var InfiniteLoop = require('infinite-loop');
@@ -151,4 +153,4 @@ client.on('message', message => {
 });
 
 
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.TOKEN_BOT);
