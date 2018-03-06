@@ -9,6 +9,7 @@ var InfiniteLoop = require('infinite-loop');
 var il = new InfiniteLoop;
 
 var quotes = config.quotes;
+var images = config.images;
 var prefix = config.prefix;
 
 client.on('ready', () => {
@@ -20,6 +21,11 @@ function randomQuote() {
 	return quotes[Math.floor(Math.random() * quotes.length)];
 };
 il.add(randomQuote, []);
+
+function randomImage() {
+	return images[Math.floor(Math.random() * images.length)];
+};
+il.add(randomImage, []);
 
 il.run();
 
@@ -103,7 +109,7 @@ client.on('message', message => {
     message.reply(message.author.avatarURL);
   }
   if (message.content.startsWith(config.prefix + "ganteng")) {
-    message.reply("Tampan dan Berani", {files: ["http://i65.tinypic.com/27y3ndx.jpg"]});
+    message.channel.send(randomImage());
   }
   if (message.content.startsWith(config.prefix + "cointoss") || message.content.startsWith(config.prefix + "coinflip")) {
 		var flip = Math.floor(Math.random() * 2 + 1);
