@@ -65,7 +65,7 @@ client.on('message', message => {
 
   if (message.content.startsWith(config.prefix + "points")) {
     sql.get(`SELECT * FROM scores WHERE userId ="${message.author.id}"`).then(row => {
-      if (!row) return message.reply("sadly you do not have any points yet!");
+      if (!row) return message.reply("gapunya poin bacot kamu, udah jangan bacot!");
       message.reply(`Poin bacotmu ${row.points} poin, Lama-lama tak sumpel knalpot lo!`);
     });
 	}
