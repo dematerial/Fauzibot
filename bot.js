@@ -1,5 +1,5 @@
 const Discord = require('discord.js');
-
+const { exec } = require('child_process');
 const client = new Discord.Client();
 const config = require('./config.json');
 const weather = require('weather-js');
@@ -112,6 +112,17 @@ client.on('message', message => {
   }
   if (message.content.startsWith(config.prefix + "ganteng")) {
     message.channel.send(randomImage());
+	}
+	if (message.content.startsWith(config.prefix + "server")) {
+		exec(`curl --silent --show-error http://127.0.0.1:4040/api/tunnels | sed -nE 's/.*public_url":"tcp:..([^"]*).*/\1/p'`, (err, stdout, stderr) => {
+			if (err) {
+				// node couldn't execute the command
+				return;
+			}
+		
+			// the *entire* stdout and stderr (buffered)
+			message.channel.send(stdout);
+		});
   }
   if (message.content.startsWith(config.prefix + "cointoss") || message.content.startsWith(config.prefix + "coinflip")) {
 		var flip = Math.floor(Math.random() * 2 + 1);
